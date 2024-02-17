@@ -1,4 +1,4 @@
-package org.nkon.studentmanagementsystem;
+package org.nkon.studentmanagementsystem.Managers;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
@@ -25,7 +25,7 @@ public class DataBaseConnection {
                     PASSWORD
             );
         } catch (Exception e) {
-            e.printStackTrace();
+            ErrorAlert.ShowErrorAlert("Database Connection Error", "Couldn't establish a connection to the database");
             return null;
         }
     }

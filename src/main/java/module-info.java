@@ -8,4 +8,8 @@ module org.nkon.studentmanagementsystem {
 
     opens org.nkon.studentmanagementsystem to javafx.fxml;
     exports org.nkon.studentmanagementsystem;
+    exports org.nkon.studentmanagementsystem.Managers;
+    opens org.nkon.studentmanagementsystem.Managers to javafx.fxml;
+    exports org.nkon.studentmanagementsystem.Controllers;
+    opens org.nkon.studentmanagementsystem.Controllers to javafx.fxml;
 }

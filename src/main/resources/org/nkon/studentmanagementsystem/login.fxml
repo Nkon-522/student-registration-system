@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nkon.studentmanagementsystem.Controllers.LoginController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateY="10.0">
          <image>
@@ -37,8 +37,8 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Login" translateX="-50.0" />
-            <Button mnemonicParsing="false" text="Exit" translateX="50.0" />
+            <Button mnemonicParsing="false" onAction="#loginButtonClick" text="Login" translateX="-50.0" />
+            <Button mnemonicParsing="false" onAction="#exitButtonClick" text="Exit" translateX="50.0" />
          </children>
       </HBox>
    </children>
