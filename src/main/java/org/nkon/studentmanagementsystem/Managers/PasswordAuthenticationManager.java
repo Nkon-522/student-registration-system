@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * @author erickson
  * @see <a href="http://stackoverflow.com/a/2861125/3474">StackOverflow</a>
  */
-public final class PasswordAuthentication
+public final class PasswordAuthenticationManager
 {
 
     /**
@@ -41,7 +41,7 @@ public final class PasswordAuthentication
 
     private final int cost;
 
-    public PasswordAuthentication()
+    public PasswordAuthenticationManager()
     {
         this(DEFAULT_COST);
     }
@@ -51,7 +51,7 @@ public final class PasswordAuthentication
      *
      * @param cost the exponential computational cost of hashing a password, 0 to 30
      */
-    public PasswordAuthentication(int cost)
+    public PasswordAuthenticationManager(int cost)
     {
         iterations(cost); /* Validate cost */
         this.cost = cost;

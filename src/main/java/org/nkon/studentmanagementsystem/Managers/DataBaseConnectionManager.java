@@ -5,7 +5,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DataBaseConnection {
+public class DataBaseConnectionManager {
     static String DB_URL;
     static String USER;
     static String PASSWORD;
@@ -25,7 +25,7 @@ public class DataBaseConnection {
                     PASSWORD
             );
         } catch (Exception e) {
-            ErrorAlert.ShowErrorAlert("Database Connection Error", "Couldn't establish a connection to the database");
+            ErrorAlertManager.ShowErrorAlert("Database Connection Error", "Couldn't establish a connection to the database");
             return null;
         }
     }

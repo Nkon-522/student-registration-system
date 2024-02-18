@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.nkon.studentmanagementsystem.Managers.DataBaseConnection;
-import org.nkon.studentmanagementsystem.Managers.ErrorAlert;
-import org.nkon.studentmanagementsystem.Managers.PasswordAuthentication;
+import org.nkon.studentmanagementsystem.Managers.DataBaseConnectionManager;
+import org.nkon.studentmanagementsystem.Managers.ErrorAlertManager;
+import org.nkon.studentmanagementsystem.Managers.PasswordAuthenticationManager;
+import org.nkon.studentmanagementsystem.Mediators.LoginMainMenuMediator;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,16 +24,15 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField password;
 
-    private PasswordAuthentication passwordAuthentication;
+    private PasswordAuthenticationManager passwordAuthentication;
 
     @FXML
     protected void loginButtonClick() {
         String emailText = email.getText();
         String passwordText = password.getText();
 
-
         try {
-            Connection conn = DataBaseConnection.connection();
+            Connection conn = DataBaseConnectionManager.connection();
             if (conn == null) {
                 return;
             }
@@ -41,9 +42,9 @@ public class LoginController implements Initializable {
             if (rs.next()) {
                 String hashedPassword = rs.getString(3);
                 if (passwordAuthentication.authenticate(passwordText.toCharArray(), hashedPassword)) {
-                    System.out.println("Logged correctly!");
+                    LoginMainMenuMediator.getInstance().handleShowMainMenuScene(emailText);
                 } else {
-                    ErrorAlert.ShowErrorAlert("Login failure","Incorrect credentials!");
+                    ErrorAlertManager.ShowErrorAlert("Login failure","Incorrect credentials!");
                 }
             } else {
                 String new_user_sql = String.format(
@@ -52,10 +53,11 @@ public class LoginController implements Initializable {
                         passwordAuthentication.hash(passwordText.toCharArray())
                 );
                 st.executeQuery(new_user_sql);
-                System.out.println("New user created and logged!");
+                LoginMainMenuMediator.getInstance().handleShowMainMenuScene(emailText);
             }
-        } catch (SQLException e) {
-            ErrorAlert.ShowErrorAlert("Login Error","An error ocurred while login!");
+            conn.close();
+        } catch (SQLException | IOException e) {
+            ErrorAlertManager.ShowErrorAlert("Login Error","An error occurred while login!");
         }
 
     }
@@ -67,6 +69,9 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        passwordAuthentication = new PasswordAuthentication();
+        LoginMainMenuMediator.getInstance().registerLoginController(this);
+        passwordAuthentication = new PasswordAuthenticationManager();
     }
+
+
 }

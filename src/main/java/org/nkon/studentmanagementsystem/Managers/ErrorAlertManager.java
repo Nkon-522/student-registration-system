@@ -3,7 +3,7 @@ package org.nkon.studentmanagementsystem.Managers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
-public class ErrorAlert {
+public class ErrorAlertManager {
     @FXML
     public static void ShowErrorAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

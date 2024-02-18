@@ -12,4 +12,6 @@ module org.nkon.studentmanagementsystem {
     opens org.nkon.studentmanagementsystem.Managers to javafx.fxml;
     exports org.nkon.studentmanagementsystem.Controllers;
     opens org.nkon.studentmanagementsystem.Controllers to javafx.fxml;
+    exports org.nkon.studentmanagementsystem.Mediators;
+    opens org.nkon.studentmanagementsystem.Mediators to javafx.fxml;
 }
