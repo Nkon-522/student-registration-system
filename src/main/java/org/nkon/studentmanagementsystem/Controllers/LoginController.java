@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.nkon.studentmanagementsystem.Managers.DataBaseConnectionManager;
-import org.nkon.studentmanagementsystem.Managers.ErrorAlertManager;
+import org.nkon.studentmanagementsystem.Managers.AlertManager;
 import org.nkon.studentmanagementsystem.Managers.PasswordAuthenticationManager;
 import org.nkon.studentmanagementsystem.Mediators.LoginMainMenuMediator;
 
@@ -44,7 +44,7 @@ public class LoginController implements Initializable {
                 if (passwordAuthentication.authenticate(passwordText.toCharArray(), hashedPassword)) {
                     LoginMainMenuMediator.getInstance().handleShowMainMenuScene(emailText);
                 } else {
-                    ErrorAlertManager.ShowErrorAlert("Login failure","Incorrect credentials!");
+                    AlertManager.ShowErrorAlert("Login failure","Incorrect credentials!");
                 }
             } else {
                 String new_user_sql = String.format(
@@ -57,7 +57,7 @@ public class LoginController implements Initializable {
             }
             conn.close();
         } catch (SQLException | IOException e) {
-            ErrorAlertManager.ShowErrorAlert("Login Error","An error occurred while login!");
+            AlertManager.ShowErrorAlert("Login Error","An error occurred while login!");
         }
 
     }

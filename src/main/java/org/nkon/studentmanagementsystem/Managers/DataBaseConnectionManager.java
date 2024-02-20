@@ -25,7 +25,7 @@ public class DataBaseConnectionManager {
                     PASSWORD
             );
         } catch (Exception e) {
-            ErrorAlertManager.ShowErrorAlert("Database Connection Error", "Couldn't establish a connection to the database");
+            AlertManager.ShowErrorAlert("Database Connection Error", "Couldn't establish a connection to the database");
             return null;
         }
     }
