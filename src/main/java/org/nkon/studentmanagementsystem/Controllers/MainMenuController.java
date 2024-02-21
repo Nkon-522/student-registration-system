@@ -41,6 +41,26 @@ public class MainMenuController implements Initializable {
         MainAppManager.loadNewScene("addStudent.fxml");
     }
 
+    @FXML
+    private void handleAddAdminButton() throws IOException {
+        MainAppManager.loadNewScene("addAdmin.fxml");
+    }
+
+    @FXML
+    private void handleShowStudentsButton() throws IOException {
+        MainAppManager.loadNewScene("showStudents.fxml");
+    }
+
+    @FXML
+    private void handleShowAdminsButton() throws IOException {
+        MainAppManager.loadNewScene("showAdmins.fxml");
+    }
+
+    @FXML
+    private void handleOperationButton() throws IOException {
+        MainAppManager.loadNewScene("operation.fxml");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoginMainMenuMediator.getInstance().registerMainMenuController(this);
