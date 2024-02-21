@@ -25,7 +25,6 @@ public class AddStudentController implements Initializable {
     @FXML
     private TextField cityTextField;
 
-
     @FXML
     private ComboBox<String> bloodTypeComboBox;
 
@@ -98,8 +97,6 @@ public class AddStudentController implements Initializable {
         } catch (IOException e) {
             AlertManager.ShowErrorAlert("Main Menu Loading Failure","Couldn't go back to the Main Menu!");
         }
-
-
     }
 
     private void initializeBloodTypeComboBox() {
